@@ -61,7 +61,7 @@ void SetupRC(){
     glColorMaterial(GL_FRONT, GL_AMBIENT_AND_DIFFUSE);  
   
     // Black blue background  
-    glClearColor(0.25f, 0.25f, 0.50f, 1.0f);  
+    glClearColor(0.2f, 0.6f, 0.80f, 1.0f);  
 
 }  
   
@@ -195,6 +195,13 @@ void RenderScene(void){
     glPushMatrix();
         glTranslated(0.0f, 0.52f, 0.31f);
         gluSphere(pObj, 0.03, 26, 13);
+    glPopMatrix();
+	
+	glColor3f(0.0f,1.0f,0.0f);
+    glPushMatrix();
+        glTranslatef(0.0f, -0.4f, 0.0f);
+        glRotatef(90.0f, -1.0f, 0.0f, 0.0f);
+        gluDisk(pObj, 0.0f, 1.5f, 26, 13);
     glPopMatrix();
     // Restore the matrix state  
     glPopMatrix();  
