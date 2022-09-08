@@ -25,7 +25,7 @@ void ChangeSize(int w, int h)
     glLoadIdentity();  
   
     // Produce the perspective projection  
-    gluPerspective(35.0f, fAspect, 1.0, 40.0);  
+    gluPerspective(50.0f, fAspect, 1.0, 70.0);  
   
     glMatrixMode(GL_MODELVIEW);  
     glLoadIdentity();  
@@ -61,7 +61,7 @@ void SetupRC(){
     glColorMaterial(GL_FRONT, GL_AMBIENT_AND_DIFFUSE);  
   
     // Black blue background  
-    glClearColor(0.25f, 0.25f, 0.50f, 1.0f);  
+    glClearColor(1.0f, 1.0f, 0.30f, 1.0f);  
 
 }  
 // Respond to arrow keys (rotate snowman)
@@ -110,30 +110,166 @@ void RenderScene(void){
     // Right Feet
     glColor3f(1.0f, 1.0f, 1.0f);
     glPushMatrix();
-        glScalef(1.0f, 0.7f, 1.5f);
-        glTranslatef(0.2f, 0.0f, 0.0f);
+        glScalef(1.0f, 0.4f, 2.0f);
+        glTranslatef(0.2f, -1.0f, 0.0f);
         glutSolidCube(0.2f);
     glPopMatrix();
     // Left Feet
     glColor3f(1.0f, 1.0f, 1.0f);
     glPushMatrix();
-        glScalef(1.0f, 0.7f, 1.5f);
-        glTranslatef(-0.2f, 0.0f, 0.0f);
+        glScalef(1.0f, 0.4f, 2.0f);
+        glTranslatef(-0.2f, -1.0f, 0.0f);
         glutSolidCube(0.2f);
     glPopMatrix();
     // Right Lower Leg
-    glColor3f(1.0f, 0.0f, 0.0f);
+    glColor3f(0.0f, 0.0f, 1.0f);
     glPushMatrix();
-        glTranslatef(0.2f, 0.65f, -0.05f);
+        glTranslatef(0.2f, 0.20f, -0.1f);
         glRotatef(90.0f, 1.0f, 0.0f, 0.0f);
-        gluCylinder(pObj, 0.1f, 0.1f, 0.6f, 26, 13);
+        gluCylinder(pObj, 0.1f, 0.1f, 0.55f, 26, 13);
     glPopMatrix();
     // Left Lower Leg
-    glColor3f(1.0f, 0.0f, 0.0f);
+    glColor3f(0.0f, 0.0f, 1.0f);
     glPushMatrix();
-        glTranslatef(-0.2f, 0.65f, -0.05f);
+        glTranslatef(-0.2f, 0.20f, -0.1f);
         glRotatef(90.0f, 1.0f, 0.0f, 0.0f);
-        gluCylinder(pObj, 0.1f, 0.1f, 0.6f, 26, 13);
+        gluCylinder(pObj, 0.1f, 0.1f, 0.55f, 26, 13);
+    glPopMatrix();
+    // Right Knee
+    glColor3f(0.0f, 0.0f, 0.0f);
+    glPushMatrix();
+        glTranslatef(0.2f, 0.27f,-0.1f);
+        gluSphere(pObj, 0.13f, 26, 13);
+    glPopMatrix();
+
+    // Left Knee
+    glColor3f(0.0f, 0.0f, 0.0f);
+    glPushMatrix();
+        glTranslatef(-0.2f, 0.27f,-0.1f);
+        gluSphere(pObj, 0.13f, 26, 13);
+    glPopMatrix();
+
+    // Right Upper Leg
+    glColor3f(0.0f, 0.0f, 1.0f);
+    glPushMatrix();
+        glTranslatef(0.2f, 0.90f, -0.1f);
+        glRotatef(90.0f, 1.0f, 0.0f, 0.0f);
+        gluCylinder(pObj, 0.1f, 0.1f, 0.55f, 26, 13);
+    glPopMatrix();
+    glColor3f(0.0f, 0.0f, 0.0f);
+    glPushMatrix();
+        glTranslatef(-0.2f, 0.97f,-0.1f);
+        gluSphere(pObj, 0.13f, 26, 13);
+    glPopMatrix();
+
+
+    // Left Upper Leg
+    glColor3f(0.0f, 0.0f, 1.0f);
+    glPushMatrix();
+        glTranslatef(-0.2f, 0.90f, -0.1f);
+        glRotatef(90.0f, 1.0f, 0.0f, 0.0f);
+        gluCylinder(pObj, 0.1f, 0.1f, 0.55f, 26, 13);
+    glPopMatrix();
+    glColor3f(0.0f, 0.0f, 0.0f);
+    glPushMatrix();
+        glTranslatef(0.2f, 0.97f,-0.1f);
+        gluSphere(pObj, 0.13f, 26, 13);
+    glPopMatrix();
+    // Body
+    glColor3f(0.0f, 1.0f, 0.0f);
+    glPushMatrix();
+        glScalef(1.5f, 2.05f, 0.5f);
+        glTranslated(0.0f, 0.75f, -0.2f);
+        glutSolidCube(0.5f);
+    glPopMatrix();
+    // Neck
+    glColor3f(1.0f, 1.0f, 1.0f);
+    glPushMatrix();
+        glTranslatef(0.0f,2.1f,-0.1f);
+        glRotatef(90.0f, 1.0f, 0.0f, 0.0f);
+        gluCylinder(pObj,0.1f, 0.1f, 0.15f, 26, 13);
+    glPopMatrix();
+    // Head
+	glPushMatrix(); // save transform matrix state
+		glTranslatef(0.0f, 2.32f, -0.1f);
+		gluSphere(pObj, 0.24f, 26, 13);
+	glPopMatrix(); // restore transform matrix state
+    // Eyes (black)
+    glColor3f(0.0f, 0.0f, 0.0f);
+    glPushMatrix();
+        glTranslatef(0.08f, 2.4f, 0.1f);
+        gluSphere(pObj,0.02f, 26, 13);
+    glPopMatrix();
+    glColor3f(0.0f, 0.0f, 0.0f);
+    glPushMatrix();
+        glTranslatef(-0.08f, 2.4f, 0.1f);
+        gluSphere(pObj,0.02f, 26, 13);
+    glPopMatrix();
+    // Right Arm
+    glColor3f(0.0f, 1.0f, 0.0f);
+    glPushMatrix();
+        glTranslatef(0.45f, 1.9f,-0.1f);
+        gluSphere(pObj, 0.13f, 26, 13);
+    glPopMatrix();
+    glPushMatrix();
+        glTranslatef(0.5f, 1.9f, -0.1f);
+        glRotatef(90.0f, 1.2f, 1.0f, 0.0f);
+        gluCylinder(pObj, 0.1f, 0.1f, 0.5f, 26, 13);
+    glPopMatrix();
+    // Left Arm
+    glColor3f(0.0f, 1.0f, 0.0f);
+    glPushMatrix();
+        glTranslatef(-0.45f, 1.9f,-0.1f);
+        gluSphere(pObj, 0.13f, 26, 13);
+    glPopMatrix();
+    glPushMatrix();
+        glTranslatef(-0.5f, 1.9f, -0.1f);
+        glRotatef(90.0f, 1.2f, -1.0f, 0.0f);
+        gluCylinder(pObj, 0.1f, 0.1f, 0.5f, 26, 13);
+    glPopMatrix();
+    // Right Elbow
+    glColor3f(0.0f, 0.0f, 0.0f);
+    glPushMatrix();
+        glTranslatef(0.85f, 1.48f,-0.1f);
+        gluSphere(pObj, 0.13f, 26, 13);
+    glPopMatrix();
+    // Left Elbow
+    glColor3f(0.0f, 0.0f, 0.0f);
+    glPushMatrix();
+        glTranslatef(-0.85f, 1.48f,-0.1f);
+        gluSphere(pObj, 0.13f, 26, 13);
+    glPopMatrix();
+    // Right Forearm
+    glColor3f(1.0f, 1.0f, 1.0f);
+    glPushMatrix();
+        glTranslatef(0.85f, 1.48f, -0.05f);
+        gluCylinder(pObj, 0.1f, 0.1f, 0.5f, 26, 13);
+    glPopMatrix();
+    // Left Forearm
+    glColor3f(1.0f, 1.0f, 1.0f);
+    glPushMatrix();
+        glTranslatef(-0.85f, 1.48f, -0.05f);
+        gluCylinder(pObj, 0.1f, 0.1f, 0.5f, 26, 13);
+    glPopMatrix();
+
+    // Right Hand
+    glColor3f(1.0f, 1.0f, 1.0f);
+    glPushMatrix();
+        glScalef(1.0f, 1.0f, 1.0f);
+        glTranslatef(0.85f, 1.48f, 0.55f);
+        glutSolidCube(0.2f);
+    glPopMatrix();
+
+    // Left Hand
+    glColor3f(1.0f, 1.0f, 1.0f);
+    glPushMatrix();
+        glScalef(1.0f, 1.0f, 1.0f);
+        glTranslatef(-0.85f, 1.48f, 0.55f);
+        glutSolidCube(0.2f);
+    glPopMatrix();
+
+
+        
     glPopMatrix();
     // Restore the matrix state  
     glPopMatrix();  
@@ -146,7 +282,7 @@ int main(int argc, char *argv[]){
 
     glutInit(&argc, argv);  
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);  
-    glutInitWindowSize(800, 600);  
+    glutInitWindowSize(600, 1000);  
     glutCreateWindow("Modeling with Quadrics");  
     glutReshapeFunc(ChangeSize);  
     glutSpecialFunc(SpecialKeys);  
