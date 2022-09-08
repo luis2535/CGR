@@ -4,11 +4,9 @@
 
 static GLfloat yRot = 0.0f;
 
-
-
 // Change viewing volume and viewport.  Called when window is resized  
-void ChangeSize(int w, int h)  
-    {
+void ChangeSize(int w, int h){
+
     glClearColor(0.7f,0.87f,0.9f,1.0f);
     GLfloat fAspect;  
   
@@ -326,8 +324,6 @@ void RenderScene(void){
     // Buffer swap  
     glutSwapBuffers(); 
 
-
-
 }
 
 int main(int argc, char *argv[]){
@@ -340,6 +336,7 @@ int main(int argc, char *argv[]){
     glutReshapeFunc(ChangeSize);  
     glutSpecialFunc(SpecialKeys);  
     glutDisplayFunc(RenderScene);  
+    glRasterPos2d(0,1);
     SetupRC();  
     glutMainLoop();  
       
