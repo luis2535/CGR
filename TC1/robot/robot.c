@@ -5,10 +5,12 @@
 // Rotation
 static GLfloat yRot = 0.0f;
 static GLfloat xRot = 0.0f;
+GLfloat bra = 0.0f;
+GLfloat arm = 90.0f, per = 0.0;
 
 // Change viewing volume and viewport.  Called when window is resized  
-void ChangeSize(int w, int h)  
-    {  
+void ChangeSize(int w, int h){
+
     GLfloat fAspect;  
   
     // Prevent a divide by zero  
@@ -29,7 +31,8 @@ void ChangeSize(int w, int h)
   
     glMatrixMode(GL_MODELVIEW);  
     glLoadIdentity();  
-    }  
+
+}  
   
   
 // This function does any needed initialization on the rendering context.  Here it sets up and initializes the lighting for the scene.  
@@ -72,10 +75,9 @@ void SpecialKeys(int key, int x, int y){
     if(key == GLUT_KEY_DOWN)
         xRot += 5.0f;
     if(key == GLUT_KEY_LEFT)  
-        yRot -= 5.0f;  
-  
+        yRot -= 5.0f;
     if(key == GLUT_KEY_RIGHT)  
-        yRot += 5.0f;  
+        yRot += 5.0f;   
                   
     yRot = (GLfloat)((const int)yRot % 360);  
     xRot = (GLfloat)((const int)xRot % 360); 
@@ -83,6 +85,28 @@ void SpecialKeys(int key, int x, int y){
     // Refresh the Window  
     glutPostRedisplay();  
 }
+void entrada(unsigned char key, int x, int y){
+    if(key == 'c'){
+        arm -= 10.0f;
+        if(arm < - 160.0f)
+            arm = 0.0f;
+        bra -= 10.0f;
+        if(bra < - 130.0f)
+            bra = 0.0f;
+    }
+    if(key == 'v'){
+        arm += 10.0f;
+        if(arm >  160.0f)
+            arm = 0.0f;
+        bra += 10.0f;
+        if(bra >  130.0f)
+            bra = 0.0f;
+    }
+    // Refresh the Window  
+    glutPostRedisplay();
+}
+
+
 void RenderScene(void){
     GLUquadricObj *pObj;    // Quadric Object  
       
@@ -107,6 +131,7 @@ void RenderScene(void){
         glTranslatef(0.0f, -0.5f, -0.45f);
         gluDisk(pObj, 0.0f, 1.0f, 26, 13);
     glPopMatrix();
+
     // Right Feet
     glColor3f(1.0f, 1.0f, 1.0f);
     glPushMatrix();
@@ -121,6 +146,7 @@ void RenderScene(void){
         glTranslatef(-0.2f, -1.0f, 0.0f);
         glutSolidCube(0.2f);
     glPopMatrix();
+
     // Right Lower Leg
     glColor3f(0.0f, 0.0f, 1.0f);
     glPushMatrix();
@@ -135,13 +161,13 @@ void RenderScene(void){
         glRotatef(90.0f, 1.0f, 0.0f, 0.0f);
         gluCylinder(pObj, 0.1f, 0.1f, 0.55f, 26, 13);
     glPopMatrix();
+
     // Right Knee
     glColor3f(0.0f, 0.0f, 0.0f);
     glPushMatrix();
         glTranslatef(0.2f, 0.27f,-0.1f);
         gluSphere(pObj, 0.13f, 26, 13);
     glPopMatrix();
-
     // Left Knee
     glColor3f(0.0f, 0.0f, 0.0f);
     glPushMatrix();
@@ -161,8 +187,6 @@ void RenderScene(void){
         glTranslatef(-0.2f, 0.97f,-0.1f);
         gluSphere(pObj, 0.13f, 26, 13);
     glPopMatrix();
-
-
     // Left Upper Leg
     glColor3f(0.0f, 0.0f, 1.0f);
     glPushMatrix();
@@ -175,6 +199,7 @@ void RenderScene(void){
         glTranslatef(0.2f, 0.97f,-0.1f);
         gluSphere(pObj, 0.13f, 26, 13);
     glPopMatrix();
+
     // Body
     glColor3f(1.0f, 0.0f, 0.0f);
     glPushMatrix();
@@ -182,6 +207,7 @@ void RenderScene(void){
         glTranslated(0.0f, 0.75f, -0.2f);
         glutSolidCube(0.5f);
     glPopMatrix();
+
     // Neck
     glColor3f(1.0f, 1.0f, 1.0f);
     glPushMatrix();
@@ -189,6 +215,7 @@ void RenderScene(void){
         glRotatef(90.0f, 1.0f, 0.0f, 0.0f);
         gluCylinder(pObj,0.1f, 0.1f, 0.15f, 26, 13);
     glPopMatrix();
+
     // Hat
     glColor3f(0.0f, 0.0f, 0.0f);
     glPushMatrix();
@@ -203,6 +230,7 @@ void RenderScene(void){
         glRotatef(90.0f, -1.0f, 0.0f, 0.0f);
         gluDisk(pObj, 0.0f, 0.20f, 26, 13);
     glPopMatrix();
+
     // Head
     glColor3f(1.0f, 1.0f, 1.0f);
 	glPushMatrix(); // save transform matrix state
@@ -220,7 +248,6 @@ void RenderScene(void){
         glTranslatef(-0.08f, 2.4f, 0.1f);
         gluSphere(pObj,0.02f, 26, 13);
     glPopMatrix();
-    
     // mouth
     glColor3f(0.0f, 0.0f, 0.0f);
     glPushMatrix();
@@ -237,6 +264,7 @@ void RenderScene(void){
     glPopMatrix();
     glPushMatrix();
         glTranslatef(0.5f, 1.9f, -0.1f);
+        //glRotatef(arm, 1.2f, 1.0f, 0.0f);
         glRotatef(90.0f, 1.2f, 1.0f, 0.0f);
         gluCylinder(pObj, 0.1f, 0.1f, 0.5f, 26, 13);
     glPopMatrix();
@@ -251,6 +279,7 @@ void RenderScene(void){
         glRotatef(90.0f, 1.2f, -1.0f, 0.0f);
         gluCylinder(pObj, 0.1f, 0.1f, 0.5f, 26, 13);
     glPopMatrix();
+
     // Right Elbow
     glColor3f(0.0f, 0.0f, 0.0f);
     glPushMatrix();
@@ -263,10 +292,12 @@ void RenderScene(void){
         glTranslatef(-0.85f, 1.48f,-0.1f);
         gluSphere(pObj, 0.13f, 26, 13);
     glPopMatrix();
+
     // Right Forearm
     glColor3f(1.0f, 1.0f, 1.0f);
     glPushMatrix();
         glTranslatef(0.85f, 1.48f, -0.05f);
+        glRotatef(bra, 1.0f, 0.0f, 1.0f);
         gluCylinder(pObj, 0.1f, 0.1f, 0.5f, 26, 13);
     glPopMatrix();
     // Left Forearm
@@ -277,22 +308,20 @@ void RenderScene(void){
     glPopMatrix();
 
     // Right Hand
-    glColor3f(1.0f, 1.0f, 0.0f);
+    glColor3f(1.0f, 2.0f, 0.0f);
     glPushMatrix();
         glScalef(1.0f, 1.0f, 1.0f);
-        glTranslatef(0.85f, 1.48f, 0.55f);
+        glTranslatef(0.85f, 1.48, 0.55f);
+        glRotatef(bra, 1.0f, 0.0f, 0.0f);
         glutSolidCube(0.2f);
     glPopMatrix();
-
     // Left Hand
-    glColor3f(1.0f, 1.0f, 0.0f);
+    glColor3f(1.0f, 2.0f, 0.0f);
     glPushMatrix();
         glScalef(1.0f, 1.0f, 1.0f);
         glTranslatef(-0.85f, 1.48f, 0.55f);
         glutSolidCube(0.2f);
     glPopMatrix();
-
-
         
     glPopMatrix();
     // Restore the matrix state  
@@ -307,10 +336,11 @@ int main(int argc, char *argv[]){
     glutInit(&argc, argv);  
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);  
     glutInitWindowSize(600, 1000);  
-    glutCreateWindow("Modeling with Quadrics");  
+    glutCreateWindow("ROBOT - Gabriel Anselmo e Luis Bertelli");  
     glutReshapeFunc(ChangeSize);  
     glutSpecialFunc(SpecialKeys);  
     glutDisplayFunc(RenderScene);  
+    glutKeyboardFunc(entrada);
     SetupRC();  
     glutMainLoop();  
       
