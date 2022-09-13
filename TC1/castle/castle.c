@@ -59,12 +59,12 @@ void SetupRC(){
     // Set Material properties to follow glColor values  
     glColorMaterial(GL_FRONT, GL_AMBIENT_AND_DIFFUSE);  
   
-    // Black blue background  
+    // Background color
     glClearColor(0.25f, 0.25f, 0.50f, 1.0f);  
 
 }  
   
-// Respond to arrow keys (rotate snowman)
+// Respond to arrow keys (rotate castle)
 void SpecialKeys(int key, int x, int y){  
 
     if(key == GLUT_KEY_LEFT)  
@@ -332,7 +332,7 @@ int main(int argc, char *argv[]){
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);  
     glutInitWindowSize(950,700);
     glutInitWindowPosition(50,0);
-    glutCreateWindow("Castelo");  
+    glutCreateWindow("CASTLE - Gabriel Anselmo e Luis Bertelli");  
     glutReshapeFunc(ChangeSize);  
     glutSpecialFunc(SpecialKeys);  
     glutDisplayFunc(RenderScene);  

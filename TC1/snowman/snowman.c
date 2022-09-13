@@ -60,7 +60,7 @@ void SetupRC(){
     // Set Material properties to follow glColor values  
     glColorMaterial(GL_FRONT, GL_AMBIENT_AND_DIFFUSE);  
   
-    // Black blue background  
+    // Background  color
     glClearColor(0.2f, 0.6f, 0.80f, 1.0f);  
 
 }  
@@ -216,7 +216,7 @@ int main(int argc, char *argv[]){
     glutInit(&argc, argv);  
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);  
     glutInitWindowSize(800, 600);  
-    glutCreateWindow("Modeling with Quadrics");  
+    glutCreateWindow("SNOWMAN - Gabriel Anselmo e Luis Bertelli");  
     glutReshapeFunc(ChangeSize);  
     glutSpecialFunc(SpecialKeys);  
     glutDisplayFunc(RenderScene);  

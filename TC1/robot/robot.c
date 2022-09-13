@@ -63,11 +63,11 @@ void SetupRC(){
     // Set Material properties to follow glColor values  
     glColorMaterial(GL_FRONT, GL_AMBIENT_AND_DIFFUSE);  
   
-    // Black blue background  
+    // Background  color
     glClearColor(0.2f, 0.0f, 0.2f, 0.3f);  
 
 }  
-// Respond to arrow keys (rotate snowman)
+// Respond to arrow keys (rotate castle)
 void SpecialKeys(int key, int x, int y){  
 
     if(key == GLUT_KEY_UP)
