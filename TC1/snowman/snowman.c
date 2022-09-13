@@ -167,7 +167,7 @@ void RenderScene(void){
     // Hat Border
     glPushMatrix();
         glTranslatef(0.0f, 1.17f, 0.0f);
-        glRotatef(90.0f, -1.0f, 0.0f, 0.0f);
+        glRotatef(90.0f, 1.0f, 0.0f, 0.0f);
         gluDisk(pObj, 0.0f, 0.30f, 26, 13);
     glPopMatrix();
     glPushMatrix();
