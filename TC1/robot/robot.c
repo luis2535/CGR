@@ -64,7 +64,8 @@ void SetupRC(){
     glColorMaterial(GL_FRONT, GL_AMBIENT_AND_DIFFUSE);  
   
     // Background  color
-    glClearColor(0.2f, 0.0f, 0.2f, 0.3f);  
+    
+    glClearColor(0.2f, 0.6f, 0.80f, 1.0f);    
 
 }  
 // Respond to arrow keys (rotate castle)
@@ -129,7 +130,7 @@ void RenderScene(void){
     glPushMatrix();
         glRotatef(90.0f, -1.0f, 0.0f, 0.0f);
         glTranslatef(0.0f, -0.5f, -0.45f);
-        gluDisk(pObj, 0.0f, 1.0f, 26, 13);
+        gluDisk(pObj, 0.0f, 4.0f, 26, 13);
     glPopMatrix();
 
     // Right Feet
@@ -216,20 +217,7 @@ void RenderScene(void){
         gluCylinder(pObj,0.1f, 0.1f, 0.15f, 26, 13);
     glPopMatrix();
 
-    // Hat
-    glColor3f(0.0f, 0.0f, 0.0f);
-    glPushMatrix();
-        glTranslatef(0.0f, 2.45f, -0.1f);
-        glRotatef(90.0f, -1.0f, 0.0f, 0.0f);
-        gluCylinder(pObj, 0.20f, 0.20f, 0.15f, 26, 13);
-    glPopMatrix();
-    // Hat Border
-    glColor3f(0.0f,0.0f,0.0f);
-    glPushMatrix();
-        glTranslatef(0.0f, 2.65f, 0.0f);
-        glRotatef(90.0f, -1.0f, 0.0f, 0.0f);
-        gluDisk(pObj, 0.0f, 0.20f, 26, 13);
-    glPopMatrix();
+    
 
     // Head
     glColor3f(1.0f, 1.0f, 1.0f);
@@ -248,13 +236,8 @@ void RenderScene(void){
         glTranslatef(-0.08f, 2.4f, 0.1f);
         gluSphere(pObj,0.02f, 26, 13);
     glPopMatrix();
-    // mouth
-    glColor3f(0.0f, 0.0f, 0.0f);
-    glPushMatrix();
-        glScalef(0.5f, 1.0f, 1.0f);
-        glTranslatef(0.0f, 2.3f, 0.1f);
-        glutSolidCube(0.1f);
-    glPopMatrix();
+    // Nose
+    
 
     // Right Arm
     glColor3f(1.0f, 0.0f, 0.0f);
@@ -308,7 +291,7 @@ void RenderScene(void){
     glPopMatrix();
 
     // Right Hand
-    glColor3f(1.0f, 2.0f, 0.0f);
+    glColor3f(1.0f, 1.0f, 1.0f);
     glPushMatrix();
         glScalef(1.0f, 1.0f, 1.0f);
         glTranslatef(0.85f, 1.48, 0.55f);
@@ -316,7 +299,7 @@ void RenderScene(void){
         glutSolidCube(0.2f);
     glPopMatrix();
     // Left Hand
-    glColor3f(1.0f, 2.0f, 0.0f);
+    glColor3f(1.0f, 1.0f, 1.0f);
     glPushMatrix();
         glScalef(1.0f, 1.0f, 1.0f);
         glTranslatef(-0.85f, 1.48f, 0.55f);
