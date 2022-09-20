@@ -23,13 +23,13 @@ Snow snow[num];
 
 void init_flakes(int part){
     glColor4f(1.0, 1.0, 1.0, 0.0);
-    snow[part].life = (double) (8 + rand() % 4)/5;
-    snow[part].pos_x = (double) ((rand() % 100) - 60)/10;
+    snow[part].life = (double) (10 + rand() % 4)/5;
+    snow[part].pos_x = (double) ((rand() % 120) - 60)/10;
     snow[part].pos_y = 4.5;
-    snow[part].pos_z = (double) ((rand() % 200) - 100)/10;
+    snow[part].pos_z = (double) ((rand() % 150) - 100)/10;
     snow[part].vel = -2.5;
     snow[part].gravity = -0.5;
-    snow[part].radius = 0.03;
+    snow[part].radius = 0.02;
     snow[part].alive = false;
 }
 
@@ -37,7 +37,6 @@ void init_snow() {
    
     int cont = 0;
     glColor4f(1.0, 1.0, 1.0, 1.0);
-
     for( int i = 0; i < num; i++){
         glPushMatrix();
             glTranslatef(snow[i].pos_x, snow[i].pos_y, snow[i].pos_z);
@@ -69,7 +68,7 @@ void init_snow() {
 }
 
 void init(void){
-    glClearColor(0.0, 0.0, 0.0, 1.0);
+    glClearColor(1.0, 0.0, 0.0, 1.0);
 	glOrtho(0, 640, 0, 480, -1, 1);
 }
 
@@ -77,14 +76,14 @@ void display(void){
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	glLoadIdentity();
-    
-
-	glTranslatef(0.0f,0.0f,-6.0f);
-	
+    	
+	glTranslatef(0.0f,0.0f,0.0f);
 	init_snow();
-
+ 
    	glutSwapBuffers();
+
 }
+
 void ChangeSize(int w, int h){
     GLfloat fAspect;  
   
@@ -139,7 +138,7 @@ int main(int argc, char *argv[]){
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE | GLUT_DEPTH );
 	glutInitWindowSize (900, 680);
-	glutCreateWindow ("Snow - Gabriel Anselmo e Luís Bertelli");
+	glutCreateWindow ("Snow - Gabriel Anselmo e Luis Bertelli");
     glutReshapeFunc(ChangeSize);
 	glutDisplayFunc(display);
 	glutIdleFunc(display);
