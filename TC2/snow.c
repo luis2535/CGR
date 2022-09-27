@@ -22,6 +22,7 @@ typedef struct create_snow
 Snow snow[num];
 
 void init_flakes(int part){
+    // posições iniciais do floco de neve são definidas
     glColor4f(1.0, 1.0, 1.0, 0.0);
     snow[part].life = (double) (10 + rand() % 4)/5;
     snow[part].pos_x = (double) ((rand() % 120) - 60)/10;
@@ -38,28 +39,33 @@ void init_snow() {
     int cont = 0;
     glColor4f(1.0, 1.0, 1.0, 1.0);
     for( int i = 0; i < num; i++){
+        //cria e posiciona flocos de neve
         glPushMatrix();
             glTranslatef(snow[i].pos_x, snow[i].pos_y, snow[i].pos_z);
             glutSolidSphere(snow[i].radius, 13, 13);
         glPopMatrix();
 
     if (snow[i].alive){
+        //se queda ja começou, continua a queda e aumenta a velocidade
         cont++;
         double fall = -5000 + rand() % 2000;
         if (cont % 15 == 0){
+            //desacelera um pouco a queda para ficar mais suave
             snow[i].pos_x += - snow[i].vel/fall;
         }
         snow[i].pos_x += snow[i].vel/fall;
         snow[i].vel += snow[i].gravity;
         snow[i].pos_y += snow[i].vel/1000;
-        snow[i].life -= 0.01;
+        snow[i].life -= 0.01; // se chega a 0 a trajetória finaliza
     }
     else{
+        //faz um teste para ver se o floco deve ou não começar a cair
         if (rand() % 100 < 2){
             snow[i].alive = true;
         }
     }
     if(snow[i].life < 0.0){
+        //se o floco ja chegou ao final da sua trajetoria o, o floco é instanciado novamente 
         init_flakes(i);
     }
 
@@ -71,7 +77,7 @@ void init(void){
     glClearColor(1.0, 0.0, 0.0, 1.0);
 	glOrtho(0, 640, 0, 480, -1, 1);
 }
-
+//iniciar a imagem
 void display(void){
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -83,7 +89,7 @@ void display(void){
    	glutSwapBuffers();
 
 }
-
+// posições da janela
 void ChangeSize(int w, int h){
     GLfloat fAspect;  
   
@@ -101,7 +107,7 @@ void ChangeSize(int w, int h){
 	glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
 }
-
+// Luz do sistema
 void SetupRC(){
 	glShadeModel( GL_SMOOTH );
 	glClearDepth( 1.0f );
