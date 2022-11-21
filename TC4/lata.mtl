@@ -20,7 +20,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 3
-map_Kd /home/luis2535/UDESC/CGR/textura/texturafinal.jpg
+map_Kd texturafinal.jpg
 
 newmtl topo_lata
 Ns 771.149649
@@ -31,4 +31,4 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 3
-map_Kd /home/luis2535/UDESC/CGR/textura/tampa.jpg
+map_Kd tampa.jpg
