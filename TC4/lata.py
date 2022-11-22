@@ -1,3 +1,5 @@
+# python3 lata.py lata.obj
+
 import sys, pygame
 from pygame.locals import *
 from pygame.constants import *
