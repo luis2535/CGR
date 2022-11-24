@@ -1,3 +1,5 @@
 # Trabalho Final
 
-Mapeamento de Ray Tracing em dupla com Paulo Albuquerque.
+ALUNOS: Gabriel Anselmo Ramos e  Luis Eduardo Bertelli
+
+Mapeamento de Ray Tracing.
