@@ -1,0 +1,17 @@
+html, body {
+  margin: 10px;
+  padding: 0;
+  /* background:  linear-gradient( 45deg, red, green, yellow, blue ); */
+  background: linear-gradient( 45deg, #a10aa1, #250225, #5f0e5f, #4d0d4d );
+}
+
+/* canvas {
+  margin-bottom: 20px;
+  width: 50%;
+} */
+
+canvas{
+  border-bottom: 10px solid #00ff00;
+  margin-top: 20px;
+  margin-left: 20%;
+}
