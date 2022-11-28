@@ -14,6 +14,7 @@ viewport = (800,600)
 hx = viewport[0]/2
 hy = viewport[1]/2
 srf = pygame.display.set_mode(viewport, OPENGL | DOUBLEBUF)
+glClearColor(0.2, 0.7, 0.5, 0.5)
 
 glLightfv(GL_LIGHT0, GL_POSITION,  (-40, 200, 100, 0.0))
 glLightfv(GL_LIGHT0, GL_AMBIENT, (0.2, 0.2, 0.2, 1.0))
@@ -73,5 +74,6 @@ while 1:
     glRotate(ry, 1, 0, 0)
     glRotate(rx, 0, 1, 0)
     glCallList(obj.gl_list)
+
 
     pygame.display.flip()

@@ -6,7 +6,7 @@
 int shoulder = 0, elbow = 0;
 int arm1 = 0, arm2= 0, forearm1 = 0, forearm2 =0, leg1 = 0, leg2 = 0, knee1 = 0, knee2 = 0;
 int ativa = 0;
-int cont = 0;
+int cont = 0, cont2 = 0;
 
 void init(void)
 {
@@ -141,6 +141,7 @@ void entrada(unsigned char key, int x, int y){
         case 'r':
         case 'R':
             arm1 = arm2 = forearm1 = forearm2 = leg1 = leg2 = knee1 = knee2 =  shoulder = elbow = 0 ;
+            cont = cont2 = 0;
             glutPostRedisplay();
             break;
         case 'z':
@@ -200,20 +201,35 @@ void entrada(unsigned char key, int x, int y){
             }else if(cont >= 33 && cont < 49){
                 leg2 = (leg2 - 5) % 90;
                 knee2 = (knee2 + 5) % 90;
-                arm1 = (arm1 + 5) % 90;
-                arm2 = (arm2 - 5) % 90;
+                arm1 = (arm1 - 5) % 90;
+                arm2 = (arm2 + 5) % 90;
                 cont++;
             }else if(cont >= 49 && cont < 65){
                 leg2 = (leg2 + 5) % 90;
                 knee2 = (knee2 - 5) % 90;
-                arm1 = (arm1 - 5) % 90;
-                arm2 = (arm2 + 5) % 90;
+                arm1 = (arm1 + 5) % 90;
+                arm2 = (arm2 - 5) % 90;
                 cont++;
             }else{
                 arm1 = arm2 = forearm1 = forearm2 = leg1 = leg2 = knee1 = knee2 =  shoulder = elbow = 0 ;
                 cont = 0;
             }
-            
+            glutPostRedisplay();
+            break;
+            case 'l':
+            case 'L':
+                if (cont2 >= 0 && cont2 < 19){
+                        shoulder = (shoulder + 5) % 180;
+                        cont2++;
+                    }else if(cont2 >= 19 && cont2 < 42){
+                        elbow = (elbow + 5) % 130;
+                        cont2++;
+                    }else if(cont2 >= 42 && cont2 < 65){
+                        elbow = (elbow - 5) % 130;
+                        cont2++;
+                    }else{
+                        cont2 = 19;
+                    } 
             glutPostRedisplay();
             break;
         default:
