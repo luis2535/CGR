@@ -6,6 +6,7 @@
 int shoulder = 0, elbow = 0;
 int arm1 = 0, arm2= 0, forearm1 = 0, forearm2 =0, leg1 = 0, leg2 = 0, knee1 = 0, knee2 = 0;
 int ativa = 0;
+int cont = 0;
 
 void init(void)
 {
@@ -182,9 +183,43 @@ void entrada(unsigned char key, int x, int y){
             }
             glutPostRedisplay();
             break;
+        case 'k':
+        case 'K':
+            if(cont >= 0 && cont < 17){
+                leg1 = (leg1 - 5) % 90;
+                knee1 = (knee1 + 5) % 90;
+                arm1 = (arm1 + 5) % 90;
+                arm2 = (arm2 - 5) % 90;
+                cont++;
+            }else if(cont >= 17 && cont < 33){
+                leg1 = (leg1 + 5) % 90;
+                knee1 = (knee1 - 5) % 90;
+                arm1 = (arm1 - 5) % 90;
+                arm2 = (arm2 + 5) % 90;
+                cont++;
+            }else if(cont >= 33 && cont < 49){
+                leg2 = (leg2 - 5) % 90;
+                knee2 = (knee2 + 5) % 90;
+                arm1 = (arm1 + 5) % 90;
+                arm2 = (arm2 - 5) % 90;
+                cont++;
+            }else if(cont >= 49 && cont < 65){
+                leg2 = (leg2 + 5) % 90;
+                knee2 = (knee2 - 5) % 90;
+                arm1 = (arm1 - 5) % 90;
+                arm2 = (arm2 + 5) % 90;
+                cont++;
+            }else{
+                arm1 = arm2 = forearm1 = forearm2 = leg1 = leg2 = knee1 = knee2 =  shoulder = elbow = 0 ;
+                cont = 0;
+            }
+            
+            glutPostRedisplay();
+            break;
         default:
             break;
         }
+        
 }
 
 
