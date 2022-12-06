@@ -10,23 +10,7 @@ let bestDist = r;
 
 function setup() {
   // createCanvas(500, 500);
-  createCanvas(825, 500);
-  
-  // addParticleBt = createButton("Adicionar Particula");
-  // addParticleBt.position(5, height + 5);
-  // addParticleBt.mousePressed(addParticle);
-
-  // removeParticleBt = createButton("Remover Particula");
-  // removeParticleBt.position(150, height + 5);
-  // removeParticleBt.mousePressed(removeParticle);
-
-  // addObstacleBt = createButton("Adicionar Obstáculo");
-  // addObstacleBt.position(5, height + 35);
-  // addObstacleBt.mousePressed(addObstacle);
-
-  // removeObstacleBt = createButton("Remover Obstáculo");
-  // removeObstacleBt.position(150, height + 35);
-  // removeObstacleBt.mousePressed(removeObstacle);
+  createCanvas(800, 500);
 
   walls.push(new Boundary(-1, -1, width, -1));
   walls.push(new Boundary(width, -1, width, height));
@@ -74,63 +58,6 @@ function removeObstacle() {
     walls.splice(pos, 1);
 }
 
-function mouseReleased() {
-  mouseDown = false;
-  iParticle = -1;
-  iObstacle = -1;
-  obstacleA = true;
-}
-
-function mousePressed() {
-  let mousePos = createVector(mouseX, mouseY);
-  for (let i = 0; i < particles.length; i++) {
-    if (bestDist > mousePos.dist(particles[i].getPos())) {
-      iParticle = i;
-      bestDist = mousePos.dist(particles[i].getPos());
-    }
-  }
-
-  for (let i = 0; i < walls.length; i++) {
-    if (bestDist > mousePos.dist(walls[i].getPosA())) {
-      iParticle = -1;
-      iObstacle = i;
-      obstacleA = true;
-      bestDist = mousePos.dist(walls[i].getPosA());
-    }
-    if (bestDist > mousePos.dist(walls[i].getPosB())) {
-      iParticle = -1;
-      iObstacle = i;
-      obstacleA = false;
-      bestDist = mousePos.dist(walls[i].getPosB());
-    }
-    if (bestDist > mousePos.dist(walls[i].getPosC())) {
-      iParticle = -1;
-      iObstacle = i;
-      obstacleA = false;
-      bestDist = mousePos.dist(walls[i].getPosC());
-    }
-  }
-  bestDist = r;
-  if (iParticle != -1 || iObstacle != -1) {
-    mouseDown = true;
-  }
-}
-
-function mouseDragged() {
-  if (mouseDown) {
-    if (iParticle != -1)
-      particles[iParticle].update(mouseX, mouseY);
-    else if (iObstacle != -1) {
-      if (obstacleA)
-        walls[iObstacle].updateA(mouseX, mouseY);
-      else if (obstacleA)
-        walls[iObstacle].updateB(mouseX, mouseY);
-      else
-        walls[iObstacle].updateC(mouseX, mouseY);
-    }
-  }
-}
-
 function draw() {
   background(0);
   for (let wall of walls) {
@@ -141,4 +68,89 @@ function draw() {
     particles[i].showLines();
     particles[i].look(walls);
   }
+}
+
+/* LOPPP  DE LUZ */
+/*https://rossener.com/como-criar-um-timer-com-resume-pause-e-reset-usando-javascript/#o-que-%C3%A9-um-timer*/
+
+function animation() {
+    time = 1000, delay = 500;
+    setTimeout(addParticle, time);
+    time += 300;
+    setTimeout(addObstacle, time);
+    time += 500;
+    setTimeout(removeParticle, time);
+    time += 300;
+    setTimeout(addParticle, time);
+    time += 300;
+    setTimeout(addParticle, time);
+    time += 300;
+    setTimeout(addParticle, time);
+    time += 300;
+    setTimeout(addObstacle, time);
+    time += 1000;
+    setTimeout(removeParticle, time);
+    time += 300;
+    setTimeout(addParticle, time);
+    time += 300;
+    setTimeout(removeParticle, time);
+    time += 300;
+    setTimeout(removeParticle, time);
+    time += 1000;
+    setTimeout(addParticle, time);
+    time += 1000;
+    setTimeout(removeParticle, time);
+    time += 300;
+    setTimeout(addObstacle, time);
+    time += 300;
+    setTimeout(addObstacle, time);
+    time += 400;
+    setTimeout(addParticle, time);
+    time += 400;
+    setTimeout(addParticle, time);
+    time += 400;
+    setTimeout(addParticle, time);
+    time += 500;
+    setTimeout(removeObstacle, time);
+    time += 300;
+    setTimeout(removeParticle, time);
+    time += 300;
+    setTimeout(addParticle, time);
+    time += 500;
+    setTimeout(removeObstacle, time);
+    time += 300;
+    setTimeout(removeParticle, time);
+    time += 500;
+    setTimeout(removeObstacle, time);
+    time += 300;
+    setTimeout(removeParticle, time);
+    time += 300;
+    setTimeout(removeParticle, time);
+}
+
+function addParticleS() {
+    time = 1000, delay = 500;
+    setTimeout(addParticle, time);
+    time += delay;
+    setTimeout(addParticle, time);
+    time += delay;
+    setTimeout(addParticle, time);
+    time += delay;
+    setTimeout(addParticle, time);
+    time += delay;
+    setTimeout(removeParticle, time);
+    time += delay;
+    setTimeout(removeParticle, time);
+    time += delay;
+    setTimeout(addParticle, time);
+    time += delay;
+    setTimeout(addParticle, time);
+    time += delay;
+    setTimeout(removeParticle, time);
+    time += delay;
+    setTimeout(removeParticle, time);
+    time += delay;
+    setTimeout(removeParticle, time);
+    time += delay;
+    setTimeout(removeParticle, time);
 }
