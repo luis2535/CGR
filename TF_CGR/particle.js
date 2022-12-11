@@ -1,8 +1,8 @@
 class Particle {
-  constructor() {
+  constructor(width, height) {
     this.primaryColor = [random(255), random(255), random(255), 100];
     this.secondaryColor = [random(255), random(255), random(255), 70];
-    this.pos = createVector(random(width), random(height));
+    this.pos = createVector(width, height);
     this.rays = [];
     for (let a = 0; a < 360; a += 1) {
       this.rays.push(new Ray(this.pos, radians(a)));

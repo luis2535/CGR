@@ -2,7 +2,8 @@ html, body {
   margin: 10px;
   padding: 0;
   /* background:  linear-gradient( 45deg, red, green, yellow, blue ); */
-  background: linear-gradient( 45deg, #a10aa1, #250225, #5f0e5f, #4d0d4d );
+  /*background: #FFFFFF url("/Mascote-png.png");*/
+  background: linear-gradient( 45deg, #000000, #000000, #000000, #000000 );
 }
 
 /* canvas {
@@ -12,8 +13,11 @@ html, body {
 
 canvas{
   border-bottom: 10px solid #00ff00;
+  border-top: 10px solid #00ff00;
+  border-left: 10px solid #00ff00;
+  border-right: 10px solid #00ff00;
   margin-top: 20px;
-  margin-left: 20%;
+  margin-left: 28%;
 }
 
 .vertical {
