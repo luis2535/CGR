@@ -27,7 +27,7 @@ function setup() {
     let y3 = random(height);
     walls.push(new Boundary(x1, y1, x2, y2, x3, y3));
   }
-  
+
   for (let i = 0; i < 1; i++) {
     particles.push(new Particle());
   }
@@ -275,4 +275,24 @@ function addParticleS() {
     setTimeout(removeParticle, time);
     time += delay;
     setTimeout(removeParticle, time);
+    time += delay;
+    setTimeout(addParticle, time);
+    time += delay;
+    setTimeout(addParticle, time);
+    time += delay;
+    setTimeout(removeParticle, time);
+    time += delay;
+    setTimeout(addParticle, time);
+    time += delay;
+    setTimeout(addParticle, time);
+    time += delay;
+    setTimeout(removeParticle, time);
+    time += delay;
+    setTimeout(removeParticle, time);
+    time += delay;
+    setTimeout(removeParticle, time);
+    time += delay;
+    setTimeout(addParticle, time);
+    time += delay;
+    setTimeout(addParticle, time);
 }
