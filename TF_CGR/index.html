@@ -15,6 +15,7 @@
     <script src="ray.js"></script>
     <script src="boundary.js"></script>
     <script src="particle.js"></script>
+    <script src="MovingParticle.js"></script>
     <script class="" src="sketch.js"></script>
     <div class="container px-6 text-center">
       <div class="flex">
@@ -27,9 +28,15 @@
               </div>
               <div class="col">
               <div class="p-3 border  btn-group">
-                <button class="btn btn-danger" onclick="removeParticle()">- Particula</button>
+                  <button class="btn btn-danger" onclick="removeParticle()">- Particula</button>
                   <button class="btn btn-primary" onclick="addParticle()">+ Particula</button>
               </div>
+              </div>
+              <div class="col">
+                <div class="p-3 border btn-group">
+                  <button class="btn btn-info" onclick="removeMovingParticle()">- Especial</button>
+                  <button class="btn btn-info" onclick="addMovingParticle()">+ Especial</button>
+                </div>
               </div>
               <div class="col">
                 <div class="p-3 border btn-group">
@@ -50,6 +57,7 @@
       <button class="btn btn-info" onclick="animation()">Animação</button>
       <button class="btn btn-info" onclick="centerParticle()">Centralizada</button>
       <button class="btn btn-info" onclick="addParticleS()">Particulas</button>
+      
     </div>
   </body>
 </html>

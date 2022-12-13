@@ -1,8 +1,9 @@
 let walls = [];
 let ray;
 let particles = [];
+let movingParticle = [];
 let r = 40;
-let mouseDown = false;
+//let mouseDown = false;
 let iParticle = -1;
 let iObstacle = -1;
 let obstacleA = true;
@@ -26,12 +27,18 @@ function setup() {
     let y3 = random(height);
     walls.push(new Boundary(x1, y1, x2, y2, x3, y3));
   }
-
+  
   for (let i = 0; i < 1; i++) {
     particles.push(new Particle());
   }
 }
-
+function addMovingParticle(){
+  movingParticle.push(new MovingParticle(random(width), random(height)));
+}
+function removeMovingParticle(){
+  if (movingParticle.length > 0)
+    movingParticle.splice(floor(random(movingParticle.length)), 1);
+}
 function addParticle() {
   particles.push(new Particle(random(width), random(height)));
 }
@@ -171,6 +178,12 @@ function draw() {
   background(0);
   for (let wall of walls) {
     wall.show();
+  }
+  for(let i = 0; i< movingParticle.length; i++){
+    movingParticle[i].update(mouseX, mouseY);
+    movingParticle[i].showElipses();
+    movingParticle[i].showLines();
+    movingParticle[i].look(walls);
   }
   for (let i = 0; i < particles.length; i++) {
     particles[i].showElipses();
